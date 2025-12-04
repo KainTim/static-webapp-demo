@@ -1,3 +1,8 @@
+using ForecastDbLib;
+using Microsoft.EntityFrameworkCore;
+using WebAppCC;
+using WebAppCC.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<ForeCastDbContext>();
+builder.Services.AddHostedService<DbSeedingService>();
 
 var app = builder.Build();
 
